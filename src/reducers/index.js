@@ -3,8 +3,12 @@ import { setup, updateVal, addOption } from "../actions";
 import data from "../data";
 
 const DEFAULTS = {
+  question: "КАКИЕ ЖИВОТНЫЕ У ВАС ЕСТЬ?",
   options: data,
-  initVal: 19
+  initVal: 19,
+  error: {
+    number: "Can not find any options for this number. Try to change that number or use the checkboxes."
+  }
 };
 
 const findLastId = array => {
@@ -14,7 +18,7 @@ const findLastId = array => {
 
 const reducer = createReducer(
   {
-    [setup]: (state, payload) => ({
+    [setup]: (state) => ({
       ...state
     }),
     [updateVal]: (state, payload) => ({

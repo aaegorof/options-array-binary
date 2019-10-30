@@ -1,0 +1,38 @@
+/// Grid
+$container: 1200px;
+$columns: 12;
+
+//Colors
+$text-color: #333;
+$primary: #5c1698;
+$secondary: green;
+$error: red;
+
+$grey: #999; //notes
+$cotton: #eee;
+
+/// Fonts
+$font-size: 16px;
+
+/// Media sizes and breakpoints
+$breakpoints: (
+  xs: 320px,
+  sm: 425px,
+  md: 768px,
+  lg: 1040px,
+  xl: 1440px
+);
+
+/// Margins
+$margins: (
+  xs: 10px,
+  sm: 20px,
+  md: 40px,
+  lg: 60px,
+  xl: 100px
+);
+
+/// Additional variables:
+$input-height: 40px;
+$mobile-menu-height: 60px;
+$top-bar-height: 70px;

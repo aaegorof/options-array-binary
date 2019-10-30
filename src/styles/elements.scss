@@ -1,0 +1,56 @@
+input{
+  &[type=text] {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    height: $input-height;
+    padding: 0.2em 1em;
+    outline: none;
+    font-size: $font-size;
+    & + & {
+      margin-top: 1em;
+    }
+  }
+}
+
+button {
+  outline: none;
+  background: transparent;
+  font-weight: 400;
+  font-size: $font-size;
+  display: inline-flex;
+  line-height: 1;
+  background-image: none;
+  padding: 0.5em 2em;
+  text-align: center;
+  outline: 0;
+  text-decoration: none;
+  border: 0.15em solid;
+  height: $input-height;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-transform: uppercase;
+  &.expanded {
+    width: 100%;
+  }
+  &.wide {
+    padding-left: 3em;
+    padding-right: 3em;
+  }
+  &.small {
+    font-size: 0.8em;
+  }
+  &.big {
+    font-size: 1.2em;
+  }
+  &.primary {
+    background: $primary;
+    color: #fff;
+    border-color: $primary;
+  }
+  &[disabled] {
+    opacity: 0.8;
+    filter: grayscale(100%);
+    cursor: not-allowed;
+  }
+}

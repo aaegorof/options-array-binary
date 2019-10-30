@@ -1,0 +1,94 @@
+@mixin breakpoints($breakpoint, $column) {
+  @each $name, $size in $breakpoint {
+    @media screen and (min-width: $size){
+      @for $i from 1 through $column {
+        .col-#{$name}-#{$i}{
+          flex-basis: $i/$column * 100%;
+          width: $i/$column * 100%;
+        }
+      }
+    }
+  }
+}
+
+@mixin margins($breakpoints, $margins) {
+  @for $i from 1 through length($margins) {
+    $mg: nth(nth($margins,$i),2);
+    .mg-#{$i}{
+      margin: $mg;
+    }
+    .mg-#{$i}-v{
+      margin-top: $mg;
+      margin-bottom: $mg;
+    }
+    .mg-#{$i}-h{
+      margin-left: $mg;
+      margin-right: $mg;
+    }
+    .mg-#{$i}-l{
+      margin-left: $mg;
+    }
+    .mg-#{$i}-r{
+      margin-right: $mg;
+    }
+    .mg-#{$i}-t{
+      margin-top: $mg;
+    }
+    .mg-#{$i}-b{
+      margin-bottom: $mg;
+    }
+    .mg-auto {
+      margin: auto;
+    }
+    .pd-#{$i}{
+      padding: $mg;
+    }
+    .pd-#{$i}-v{
+      padding-top: $mg;
+      padding-bottom: $mg;
+    }
+    .pd-#{$i}-h{
+      padding-left: $mg;
+      padding-right: $mg;
+    }
+    .pd-#{$i}-l{
+      padding-left: $mg;
+    }
+    .pd-#{$i}-r{
+      padding-right: $mg;
+    }
+    .pd-#{$i}-t{
+      padding-top: $mg;
+    }
+    .pd-#{$i}-b{
+      padding-bottom: $mg;
+    }
+    @each $name, $size in $breakpoints{
+      @media screen and (min-width: $size){
+        .mg-#{$name}-#{$i}{
+          margin: $mg;
+        }
+        .mg-#{$name}-#{$i}-v{
+          margin-top: $mg;
+          margin-bottom: $mg;
+        }
+        .mg-#{$name}-#{$i}-h{
+          margin-left: $mg;
+          margin-right: $mg;
+        }
+        .mg-#{$name}-#{$i}-l{
+          margin-left: $mg;
+        }
+        .mg-#{$name}-#{$i}-r{
+          margin-right: $mg;
+        }
+        .mg-#{$name}-#{$i}-t{
+          margin-top: $mg;
+        }
+        .mg-#{$name}-#{$i}-b{
+          margin-bottom: $mg;
+        }
+      }
+    }
+  }
+}

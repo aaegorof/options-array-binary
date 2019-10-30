@@ -1,0 +1,31 @@
+.container {
+  max-width: $container;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+}
+.row {
+  box-sizing: border-box;
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  & > * {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: $container) {
+  .container {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
+
+@media screen and (min-width: nth(nth($breakpoints,1),2) ) { ///the lowest breakpoint
+  [class^=col-] {
+    width: 100%;
+  }
+}

@@ -20,7 +20,7 @@ function reverseArr(input) {
   return ret;
 }
 
-const Options = ({ initVal, options, addOption }) => {
+const Options = ({ initVal, options, addOption, question, error: {number : errorBigNumber} }) => {
   const emptyArr = new Array(options.length).fill(0);
   const maxNum = parseInt(+"1".repeat(options.length), 2);
 
@@ -92,48 +92,49 @@ const Options = ({ initVal, options, addOption }) => {
         changeError(null);
       } else {
         updateCheckedArr(emptyArr);
-        changeError("Can not find any options for this");
+        changeError(errorBigNumber);
       }
       changeVal(newVal);
     }
-
-    // if (newArr.length <= options.length) {
-    //   updateChecked(newArr);
-    //   changeVal(newVal);
-    // } else {
-    //   changeVal(newVal);
-    //   updateChecked(emptyArr);
-    // }
   };
 
   return (
-    <div className="options-wrap">
-      <input type="text" value={value} onChange={updateNum} />
+    <div className="options-wrap row mg-3-v">
+      <div className="col-lg-8 pd-2">
+        {/* iterate trought the options array */}
+        <div className="options">
+          <h2>{question}</h2>
+          {options.map((item, index) => (
+              <Checkbox
+                  key={item.id}
+                  label={item.name}
+                  onChange={toggle(index)}
+                  checked={checkedArr[index]}
+                  disabled={isDisabled}
+              />
+          ))}
 
-      {/* show error if there is some */}
-      {error && <p>{error}</p>}
-
-      {/* iterate trought the options array */}
-      <div className="options">
-        {options.map((item, index) => (
-          <Checkbox
-            key={item.id}
-            label={item.name}
-            onChange={toggle(index)}
-            checked={checkedArr[index]}
-            disabled={isDisabled}
+          {/* {We pass -1 just to make sure its out of array'sindex } */}
+          <Checkbox label="Животные отсустуют" onChange={toggle(-1)} />
+        </div>
+        <div className="new-option">
+          <input
+              type="text"
+              value={newOption}
+              onChange={e => onUpdateNewOption(e.target.value)
+              }
           />
-        ))}
+          <button onClick={submitOption(newOption)} className="primary" disabled={!newOption.length}>Add option</button>
+        </div>
 
-        {/* {We pass -1 just to make sure its out of array'sindex } */}
-        <Checkbox label="Животные отсустуют" onChange={toggle(-1)} />
       </div>
-      <input
-        type="text"
-        value={newOption}
-        onChange={e => onUpdateNewOption(e.target.value)}
-      />
-      <button onClick={submitOption(newOption)}>Add option</button>
+      <div className="col-lg-4 pd-2">
+        <p className="note">You can change the number to specify your answer, or you can use checkboxes to see how the number will change.</p>
+        <input type="text" value={value} onChange={updateNum} className="the-number"/>
+
+        {/* show error if there is some */}
+        {(value > maxNum) && <p className="error">{error}</p>}
+      </div>
     </div>
   );
 };

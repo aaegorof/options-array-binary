@@ -1,9 +1,10 @@
-$blue-primary: rgb(66, 31, 194);
+@import "../styles/vars";
+$blue-primary: $secondary;// was rgb(66, 31, 194)
 $base-font-color: #333;
 $c-border-2: #ccc;
 
 .input-checkbox {
-  $size: 19px;
+  $size: 20px;
   display: inline-flex;
   position: relative;
   cursor: pointer;
@@ -29,18 +30,32 @@ $c-border-2: #ccc;
       background: #ffffff;
       margin-right: 10px;
       background-position: center;
+      transition: all 0.15s ease;
+      &:before {
+        content: '';
+        transition: all 0.15s ease;
+        width: 100%;
+        height: 100%;
+        display: block;
+        transform: scale(0);
+        opacity: 0;
+      }
     }
   }
   & + .input-checkbox {
-    margin-top: 12px;
+    margin-top: 1rem;
   }
   &.flex {
     display: flex;
     width: 100%;
   }
   & > input:checked + i {
-    background-color: $blue-primary;
-    border-color: $blue-primary;
+    &:before {
+      transform: scale(0.7);
+      background-color: $blue-primary;
+      border-color: $blue-primary;
+      opacity: 1;
+    }
   }
   & > input:indeterminate + i,
   & > input[indeterminate="true"] + i {

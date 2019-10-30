@@ -7,6 +7,7 @@ import Options from "./components/Options";
 import { setup } from "./actions";
 
 import "./styles.scss";
+import Header from "./components/Header";
 
 const store = createStore(reducer);
 store.dispatch(setup());
@@ -14,7 +15,8 @@ store.dispatch(setup());
 const App = () => {
   return (
     <Provider store={store}>
-      <div className="App">
+      <Header/>
+      <div className="App container">
         <Options />
       </div>
     </Provider>

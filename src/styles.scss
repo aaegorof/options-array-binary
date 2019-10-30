@@ -1,8 +1,29 @@
-$input-height: 40px;
+@import "./styles/vars";
+@import "./styles/mixins";
+@import "./styles/grid";
+@import "./styles/elements";
 
-.App {
-  font-family: sans-serif;
-  text-align: center;
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  line-height: 1.6;
+  font-size: $font-size;
+  font-family: Helvetica, sans-serif;
+  color: $text-color;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 1.5em;
+}
+h2 {
+  margin-top: 0;
+  font-size: 1.2em;
+}
+.error {
+  color: $error;
+  margin-top: 1em;
 }
 .options {
   .input-checkbox {
@@ -10,12 +31,50 @@ $input-height: 40px;
   }
 }
 
-input{
-  &[type=text] {
-    display: inline-flex;
-    box-sizing: border-box;
-    height: $input-height;
-    padding: 0.2em 1em;
-    outline: none;
+.header {
+  background: $cotton;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+  h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .about {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .project-description {
+    display: inline-block;
+    text-align: left;
+    font-size: 12px;
   }
 }
+
+.note {
+  color: $grey;
+  font-size: 0.75em;
+}
+
+input.the-number {
+  height: 200px;
+  padding: 1em;
+  font-size: 70px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: $primary;
+}
+.new-option {
+  margin-top: 50px;
+  display: flex;
+  input {
+    width: 200px;
+    margin-right: 30px;
+    display: inline-flex;
+  }
+}
+//// Init the mixins
+
+@include margins($columns, $margins);
+@include breakpoints($breakpoints, $columns);
