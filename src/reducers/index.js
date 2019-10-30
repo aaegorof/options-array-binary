@@ -7,7 +7,8 @@ const DEFAULTS = {
   options: data,
   initVal: 19,
   error: {
-    number: "Can not find any options for this number. Try to change that number or use the checkboxes."
+    number:
+      "Can not find any options for this number. Try to change that number or use the checkboxes."
   }
 };
 
@@ -18,7 +19,7 @@ const findLastId = array => {
 
 const reducer = createReducer(
   {
-    [setup]: (state) => ({
+    [setup]: state => ({
       ...state
     }),
     [updateVal]: (state, payload) => ({

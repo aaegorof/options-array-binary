@@ -8,17 +8,20 @@ import { setup } from "./actions";
 
 import "./styles.scss";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const store = createStore(reducer);
 store.dispatch(setup());
 
 const App = () => {
   return (
+    /// Provider for all nested components
     <Provider store={store}>
-      <Header/>
+      <Header />
       <div className="App container">
         <Options />
       </div>
+      <Footer />
     </Provider>
   );
 };
