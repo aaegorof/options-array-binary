@@ -24,6 +24,8 @@ $c-border-2: #ccc;
       height: $size;
       min-width: $size;
       min-height: $size;
+      position: relative;
+      overflow: hidden;
       margin-top: -1px;
       border: 1px solid rgba($base-font-color, 0.5);
       border-radius: 1px;
