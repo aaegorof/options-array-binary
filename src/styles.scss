@@ -1,0 +1,21 @@
+$input-height: 40px;
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.options {
+  .input-checkbox {
+    display: flex;
+  }
+}
+
+input{
+  &[type=text] {
+    display: inline-flex;
+    box-sizing: border-box;
+    height: $input-height;
+    padding: 0.2em 1em;
+    outline: none;
+  }
+}
